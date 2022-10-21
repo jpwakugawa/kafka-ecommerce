@@ -14,4 +14,5 @@ error getting credentials - err: exec: "docker-credential-desktop": executable f
 - [Quickstart](https://kafka.apache.org/quickstart)
 - [Course: Apache Kafka 101](https://developer.confluent.io/learn-kafka/apache-kafka/events/)
 - [Kafka UI](https://github.com/provectus/kafka-ui)
+- [kafka-python](https://kafka-python.readthedocs.io/en/master/)
 
