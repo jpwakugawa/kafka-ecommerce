@@ -1,0 +1,50 @@
+version: '3.9'
+
+networks:
+  broker:
+    name: broker
+    external: true
+
+services:
+  zookeeper0:
+    container_name: zookeeper0
+    hostname: zookeeper0
+    image: confluentinc/cp-zookeeper:7.2.1
+    restart: always
+    user: root # ALERT- remove root user when bug is fixed https://github.com/confluentinc/kafka-images/issues/127
+    networks:
+      - broker
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+    volumes:
+      - ./data/zoo1/data:/var/lib/zookeeper/data:rw
+      - ./data/zoo1/log:/var/lib/zookeeper/log:rw
+
+  kafka0:
+    container_name: kafka0
+    hostname: kafka0
+    image: confluentinc/cp-kafka:7.2.1
+    restart: always
+    user: root # ALERT- remove root user when bug is fixed https://github.com/confluentinc/kafka-images/issues/127
+    networks:
+      - broker
+    depends_on:
+      - zookeeper0
+    ports:
+      - 9092:9092
+      - 9997:9997
+    volumes:
+      - ./data/kafka1:/var/lib/kafka/data:rw
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper0:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka0:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      JMX_PORT: 9997
+      KAFKA_JMX_OPTS: -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.rmi.server.hostname=kafka0 -Dcom.sun.management.jmxremote.rmi.port=9997
