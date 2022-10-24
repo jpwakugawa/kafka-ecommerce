@@ -1,2 +1,6 @@
 # Kafka & Zookeeper Logs/Data
 /data
+
+# Python Dependencies
+/venv
+__pycache__
