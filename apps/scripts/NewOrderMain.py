@@ -13,3 +13,4 @@ producer = KafkaProducer(
 if __name__ == '__main__':
   value = "1111,2222,5555"
   result = producer.send("ECOMMERCE_NEW_ORDER", value=value, key=value).get(timeout=60)
+  logger.debug("message sent")
