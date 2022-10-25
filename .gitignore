@@ -1,5 +1,6 @@
 # Kafka & Zookeeper Logs/Data
 /data
+/apps/kafka
 
 # Python Dependencies
 /venv
