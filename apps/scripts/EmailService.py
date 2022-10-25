@@ -9,11 +9,11 @@ consumer = KafkaConsumer(
     bootstrap_servers='localhost:9092',
     key_deserializer=str,
     value_deserializer=str,
-    group_id='fraud_detector'
+    group_id='email'
 )
 
 if __name__ == '__main__':
-  topics = ["ECOMMERCE_NEW_ORDER"]
+  topics = ["ECOMMERCE_SEND_EMAIL"]
   consumer.subscribe(topics=topics)
 
   while(True):
