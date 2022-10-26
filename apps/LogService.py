@@ -19,7 +19,7 @@ if __name__ == '__main__':
     records = consumer.poll(timeout_ms=100)
 
     if records:
-      logger.info("Record Found!")
+      logger.info(f"{len(records)} Records Found!")
       for r in records:
-        print(r)
+        logger.info(r)
         time.sleep(3)
