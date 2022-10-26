@@ -1,26 +1,14 @@
-# Kafka
+# Kafka-Ecommerce
 
 
 ## Description
-Getting started with Kafka
+(POC) Project that simulates a ecommerce running several micro-services with Kafka.
 
 
-### Errors
-```bash
-error getting credentials - err: exec: "docker-credential-desktop": executable file not found in $PATH, out: ``
-```
-- [Solution](https://cri.dev/posts/2020-07-06-How-to-solve-Docker-docker-credential-desktop-not-installed-or-not-available-in-PATH/)
-
-```bash
-Error: JMX connector server communication error: service:jmx:rmi://kafka0:9997
-```
-- [Solution](https://commandstech.com/jmx-connector-server-communication-and-port-already-in-use-1099-in-kafka/)
-
-
-### Resources
-- [Kafka Documentation](https://kafka.apache.org/documentation/)
+## Resources
 - [Quickstart](https://kafka.apache.org/quickstart)
+- [Apache Kafka Docs](https://kafka.apache.org/documentation/)
 - [Course: Apache Kafka 101](https://developer.confluent.io/learn-kafka/apache-kafka/events/)
+- [Kafka-Python Docs](https://kafka-python.readthedocs.io/en/master/)
+- [Kafka-Python Github](https://github.com/dpkp/kafka-python)
 - [Kafka UI](https://github.com/provectus/kafka-ui)
-- [kafka-python](https://kafka-python.readthedocs.io/en/master/)
-
