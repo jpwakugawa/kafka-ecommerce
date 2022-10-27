@@ -1,4 +1,5 @@
 import logging
+import random
 from kafka import KafkaProducer
 
 logging.basicConfig(format='%(levelname)s : %(message)s', level=logging.INFO)
@@ -11,10 +12,12 @@ producer = KafkaProducer(
 )
 
 if __name__ == '__main__':
+  user_id = str(random.choice(list(range(1, 101))))
+
   value = "1111,2222,5555"
-  producer.send("ECOMMERCE_NEW_ORDER", value=value, key=value).get(timeout=60)
-  logger.debug("order sent")
+  future_record = producer.send("ECOMMERCE_NEW_ORDER", value=value, key=user_id).get(timeout=60)
+  logger.info(f"SUCCESS! Order sent to {future_record.topic} | PARTITION {future_record.partition}")
 
   email = "Welcome! We are processing your order!" 
-  producer.send("ECOMMERCE_SEND_EMAIL", value=email, key=email).get(timeout=60)
-  logger.debug("email sent")
+  future_record = producer.send("ECOMMERCE_SEND_EMAIL", value=email, key=user_id).get(timeout=60)
+  logger.info(f"SUCCESS! Email sent to {future_record.topic} | PARTITION {future_record.partition}")
