@@ -1,19 +1,19 @@
-import logging
-import time
+from utils.custom_logging import CustomLogger
 from kafka import KafkaConsumer
+import time
 
-logging.basicConfig(format='%(levelname)s : %(message)s', level=logging.INFO)
-logger = logging.getLogger(__name__)
 
-consumer = KafkaConsumer(
-    bootstrap_servers='localhost:9092',
-    key_deserializer=str,
-    value_deserializer=str,
-    group_id='fraud_detector',
-    max_poll_records=1,
-)
+class FraudDetectorService():
+  logger = CustomLogger().get_logger()
 
-if __name__ == '__main__':
+  consumer = KafkaConsumer(
+      bootstrap_servers='localhost:9092',
+      key_deserializer=str,
+      value_deserializer=str,
+      group_id='fraud_detector',
+      max_poll_records=1,
+  )
+
   topics = ["ECOMMERCE_NEW_ORDER"]
   consumer.subscribe(topics=topics)
 
@@ -25,3 +25,7 @@ if __name__ == '__main__':
       for r in records:
         logger.info(r)
         time.sleep(3)
+
+
+if __name__ == '__main__':
+  fraud_detector_service = FraudDetectorService()
