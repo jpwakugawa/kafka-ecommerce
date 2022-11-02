@@ -9,7 +9,8 @@ consumer = KafkaConsumer(
     bootstrap_servers='localhost:9092',
     key_deserializer=str,
     value_deserializer=str,
-    group_id='fraud_detector'
+    group_id='fraud_detector',
+    max_poll_records=1,
 )
 
 if __name__ == '__main__':
