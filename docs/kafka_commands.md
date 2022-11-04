@@ -59,3 +59,25 @@ vim config/server.properties
 # the brokers.
 num.partitions=3
 ```
+
+
+### Configure Kafka & Zookeeper Logs
+- Kafka Logs
+```bash
+vim config/server.properties
+```
+```vim
+############################# Log Basics #############################
+
+# A comma separated list of directories under which to store log files
+log.dirs=$YOUR_DIR
+```
+
+- Zookeeper Logs
+```bash
+vim config/zookeeper.properties
+```
+```vim
+# the directory where the snapshot is stored.
+dataDir=$YOUR_DIR
+```
