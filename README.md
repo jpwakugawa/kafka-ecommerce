@@ -1,8 +1,13 @@
-# Kafka-Ecommerce
-
-
-## Description
+<h1 align="center">Kafka-Ecommerce</h1>
+<h3 align="center">
 (POC) Project that simulates a ecommerce running several micro-services with Kafka.
+</h3>
+<p align="center">
+<img src = https://img.shields.io/badge/Apache-Kafka-blue>
+<img src = https://img.shields.io/badge/Python3-Language%20-brightgreen>
+</p>
+
+---
 
 ## Step-by-step
 - Download Kafka Scala 2.13 at [Apache Kafka](https://kafka.apache.org/downloads)
