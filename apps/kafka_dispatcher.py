@@ -15,12 +15,14 @@ class KafkaDispatcher():
         key_serializer=str.encode,
         value_serializer=str.encode
       )
-    if isinstance(value, dict):
+    elif isinstance(value, dict):
       self.producer = KafkaProducer(
         bootstrap_servers=['localhost:9092'],
         key_serializer=str.encode,
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
       )
+    else:
+      raise ValueError(f"Unsupported value format: {value}")
   
   def send(self):
     logger = CustomLogger().get_logger()
