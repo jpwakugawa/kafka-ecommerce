@@ -32,7 +32,7 @@
    ```
  - Go to **/apps** and try sendind orders:
    ```bash
-   python3 kafka_dispatcher.py
+   python3 new_order_service.py
    ```
 
 
@@ -43,3 +43,4 @@
 - [Kafka-Python Docs](https://kafka-python.readthedocs.io/en/master/)
 - [Kafka-Python Github](https://github.com/dpkp/kafka-python)
 - [Kafka UI](https://github.com/provectus/kafka-ui)
+- [Kafka Docker](https://developer.confluent.io/quickstart/kafka-docker/)

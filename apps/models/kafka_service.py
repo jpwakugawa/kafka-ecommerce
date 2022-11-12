@@ -3,6 +3,7 @@ from kafka import KafkaConsumer
 import random
 import time
 
+
 class KafkaService():
   def __init__(self, topics, group_id) -> None:
     self.topics = topics
@@ -14,7 +15,12 @@ class KafkaService():
       client_id = random.choice(list(range(1, 101))),
       max_poll_records=1,
     )
-    self.consumer.subscribe(topics=self.topics)
+    if isinstance(topics, list):
+      self.consumer.subscribe(topics=self.topics)
+    elif isinstance(topics, str):
+      self.consumer.subscribe(pattern=self.topics)
+    else:
+      raise ValueError(f"Unsupported topics format: {topics}")
 
   def run(self):
     logger = CustomLogger().get_logger()

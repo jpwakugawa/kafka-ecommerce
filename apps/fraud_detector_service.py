@@ -1,4 +1,5 @@
-from kafka_service import KafkaService
+from models.kafka_service import KafkaService
+
 
 if __name__ == '__main__':
   topics = ["ECOMMERCE_NEW_ORDER"]
