@@ -25,7 +25,5 @@ class KafkaDispatcher():
   
   def send(self):
     logger = CustomLogger().get_logger()
-
-    for i in range(10):
-      future_record = self.producer.send(self.topic, value=self.value, key=self.key).get(timeout=60)
-      logger.info(f"SUCCESS! Order sent to {future_record.topic} | PARTITION {future_record.partition}")
+    future_record = self.producer.send(self.topic, value=self.value, key=self.key).get(timeout=60)
+    logger.info(f"SUCCESS! Order sent to {future_record.topic} | PARTITION {future_record.partition}")
