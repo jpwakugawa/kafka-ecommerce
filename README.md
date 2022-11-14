@@ -9,7 +9,7 @@
 
 ---
 
-## Step-by-step
+## Step-by-step (Local)
 - Download Kafka Scala 2.13 at [Apache Kafka](https://kafka.apache.org/downloads)
 
 - Extract the folder inside the project
@@ -24,16 +24,35 @@
   bin/kafka-server-start.sh config/server.properties
   ```
   
- - Go to **/apps** and start consumers:
-   ```bash
-   python3 email_service.py
-   python3 fraud_detector_service.py
-   python3 log_service.py
-   ```
- - Go to **/apps** and try sendind orders:
-   ```bash
-   python3 new_order_service.py
-   ```
+- Go to **/apps** and start consumers:
+  ```bash
+  python3 email_service.py
+  python3 fraud_detector_service.py
+  python3 log_service.py
+  ```
+- Go to **/apps** and try sendind orders:
+  ```bash
+  python3 new_order_service.py
+  ```
+
+## Step-by-step (Docker)
+- Start Kafka Broker and UI:
+  ```bash
+  docker-compose up -d
+  ```
+
+- See the process running at [Kafka UI](http://localhost:8080)
+
+- Go to **/apps** and start consumers:
+  ```bash
+  python3 email_service.py
+  python3 fraud_detector_service.py
+  python3 log_service.py
+  ```
+- Go to **/apps** and try sendind orders:
+  ```bash
+  python3 new_order_service.py
+  ```
 
 
 ## Resources
